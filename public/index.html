@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <title>MindBridge</title>
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+  <!-- ================= NAVBAR (LOGGED IN ONLY) ================= -->
+  <nav id="topNav" class="navbar navbar-expand-lg" style="display:none;">
+    <div class="container">
+      <span class="navbar-brand brand-text" style="cursor:pointer;"
+        onclick="showDashboard(); return false;">MindBridge</span>
+
+      <div class="ms-auto d-flex gap-3 nav-links">
+        <span onclick="showDashboard(); return false;">Dashboard</span>
+        <span onclick="showScreening(); return false;">Screening</span>
+        <span onclick="showProfile(); return false;">My Profile</span>
+        <span onclick="showForgot(); return false;">Change Password</span>
+        <span onclick="logout(); return false;">Logout</span>
+      </div>
+
+    </div>
+  </nav>
+
+  <!-- ================= INTRO PAGE ================= -->
+  <!-- ================= INTRO / HOME PAGE ================= -->
+  <section id="introPage" class="home">
+    <div class="container">
+
+      <!-- HERO -->
+      <div class="home-hero">
+        <div class="home-hero-left">
+          <span class="home-badge">Mental wellness tracker</span>
+          <h1 class="home-title">Track your wellbeing, one check-in at a time.</h1>
+          <p class="home-sub">
+            MindBridge helps you record mood, stress, energy, and sleep — then shows weekly trends so you can notice
+            patterns early.
+          </p>
+
+          <div class="home-cta">
+            <button class="btn btn-primary px-4" onclick="showLogin()">Login</button>
+            <button class="btn btn-outline-primary px-4" onclick="showSignup()">Create account</button>
+          </div>
+
+          <div class="home-mini">
+            <div class="mini-item"><i class="bi bi-shield-check"></i><span>Private account</span></div>
+            <div class="mini-item"><i class="bi bi-calendar-check"></i><span>One check-in/day</span></div>
+            <div class="mini-item"><i class="bi bi-graph-up"></i><span>Weekly trends</span></div>
+          </div>
+        </div>
+
+        <div class="home-hero-right">
+          <div class="home-mock">
+            <div class="mock-top">
+              <div class="dot"></div>
+              <div class="dot"></div>
+              <div class="dot"></div>
+            </div>
+
+            <div class="mock-body">
+              <div class="mock-card">
+                <div class="mock-label">Today</div>
+                <div class="mock-row">
+                  <div class="pill">Mood <strong>7</strong>/10</div>
+                  <div class="pill">Energy <strong>6</strong>/10</div>
+                </div>
+                <div class="mock-row">
+                  <div class="pill">Stress <strong>4</strong>/10</div>
+                  <div class="pill">Sleep <strong>6</strong>/10</div>
+                </div>
+              </div>
+
+              <div class="mock-chart">
+                <div class="mock-label">Weekly trend</div>
+                <div class="bars">
+                  <span style="height:35%"></span>
+                  <span style="height:55%"></span>
+                  <span style="height:45%"></span>
+                  <span style="height:70%"></span>
+                  <span style="height:60%"></span>
+                  <span style="height:75%"></span>
+                  <span style="height:50%"></span>
+                </div>
+                <div class="mock-days">
+                  <span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span><span>Sun</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- METRICS STRIP -->
+      <div class="home-metrics">
+        <div class="metric">
+          <div class="metric-num">1</div>
+          <div class="metric-text">
+            <div class="metric-title">Daily check-in</div>
+            <div class="metric-sub">Quick, consistent tracking</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">2</div>
+          <div class="metric-text">
+            <div class="metric-title">Wellness signals</div>
+            <div class="metric-sub">Mood • Stress • Energy • Sleep</div>
+          </div>
+        </div>
+        <div class="metric">
+          <div class="metric-num">3</div>
+          <div class="metric-text">
+            <div class="metric-title">Weekly view</div>
+            <div class="metric-sub">Spot patterns over time</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- WHAT YOU GET -->
+      <div class="home-grid">
+        <div class="home-section">
+          <h3 class="sec-title">What you can do</h3>
+          <p class="sec-sub">Everything you need for a simple, structured weekly overview.</p>
+
+          <div class="feature-grid">
+            <div class="feature">
+              <i class="bi bi-clipboard2-check"></i>
+              <div>
+                <div class="feature-title">Daily check-in</div>
+                <div class="feature-sub">Submit once per day </div>
+              </div>
+            </div>
+            <div class="feature">
+              <i class="bi bi-graph-up"></i>
+              <div>
+                <div class="feature-title">Charts & trends</div>
+                <div class="feature-sub">Track changes across the week.</div>
+              </div>
+            </div>
+            <div class="feature">
+              <i class="bi bi-person-badge"></i>
+              <div>
+                <div class="feature-title">Profile</div>
+                <div class="feature-sub">Keep your activity tied to your account.</div>
+              </div>
+            </div>
+            <div class="feature">
+              <i class="bi bi-shield-lock"></i>
+              <div>
+                <div class="feature-title">Private data</div>
+                <div class="feature-sub">Only your login can access your records.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA CARD -->
+        <div class="home-cta-card">
+          <h3 class="sec-title">Ready to start?</h3>
+          <p class="sec-sub">
+            Create an account and complete today’s check-in to unlock your dashboard.
+          </p>
+          <div class="d-flex gap-2 mt-3">
+            <button class="btn btn-primary px-4" onclick="showSignup()">Create account</button>
+            <button class="btn btn-outline-primary px-4" onclick="showLogin()">Login</button>
+          </div>
+
+          <div class="home-note mt-4">
+            <strong>Disclaimer:</strong> Educational project. Not medical advice.
+          </div>
+        </div>
+      </div>
+
+      <!-- SOFT FOOTER -->
+      <div class="soft-footer">
+        <div class="soft-footer-inner">
+
+          <!-- Brand -->
+          <div class="footer-brand">
+            <i class="bi bi-heart-pulse"></i>
+            <span>MindBridge</span>
+          </div>
+
+          <!-- Message -->
+          <p class="footer-message">
+            You don’t need to fix everything today.<br>
+            Just noticing how you feel is enough.
+          </p>
+
+          <!-- Gentle reminders -->
+          <div class="footer-reminders">
+            <span>🫶 Be kind to yourself</span>
+            <span>🌱 Progress over perfection</span>
+            <span>🧠 Awareness is strength</span>
+          </div>
+
+          <!-- Meta -->
+          <div class="footer-meta">
+            <span>Educational wellness project</span>
+            <span>•</span>
+            <span>Not medical advice</span>
+          </div>
+
+        </div>
+      </div>
+
+  </section>
+
+
+  <!-- ================= LOGIN ================= -->
+  <section id="loginPage" class="container d-none auth-page d-flex align-items-center min-vh-100">
+    <div class="row w-100 justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        <div class="auth-shell">
+
+          <!-- LEFT PANEL -->
+          <div class="auth-left d-none d-md-flex">
+            <div class="w-100 d-flex flex-column">
+              <div class="auth-brand">MindBridge</div>
+              <div class="auth-tag">Track. Review. Understand.</div>
+
+              <div class="auth-bullets mt-4">
+                <div><i class="bi bi-graph-up"></i> View weekly trends at a glance</div>
+                <div><i class="bi bi-calendar-check"></i> One check-in per day</div>
+                <div><i class="bi bi-lock"></i> Your account stays private</div>
+              </div>
+
+              <div class="auth-small mt-auto">MindBridge</div>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL (FORM) -->
+          <div class="auth-right">
+            <div class="auth-card">
+              <h4 class="auth-title">Sign in</h4>
+              <p class="auth-sub">Enter your email and password to continue.</p>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input id="loginEmail" class="form-control" placeholder="you@example.com">
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                  <input id="loginPassword" type="password" class="form-control" placeholder="••••••••">
+                  <span class="input-group-text" onclick="togglePassword('loginPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-between align-items-center mt-2">
+
+                <a href="#" class="small-link" onclick="showSignup(); return false;">Create account</a>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-4" onclick="login()">Sign in</button>
+
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+
+  <!-- ================= SIGNUP ================= -->
+  <!-- ================= SIGNUP ================= -->
+  <section id="signupPage" class="container d-none auth-page d-flex align-items-center min-vh-100">
+    <div class="row w-100 justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        <div class="auth-shell">
+
+          <!-- LEFT PANEL -->
+          <div class="auth-left d-none d-md-flex">
+            <div class="w-100 d-flex flex-column">
+              <div class="auth-brand">MindBridge</div>
+              <div class="auth-tag">Create your account and start tracking.</div>
+
+              <div class="auth-bullets mt-4">
+                <div><i class="bi bi-person-check"></i> Set up your profile</div>
+                <div><i class="bi bi-clipboard2-check"></i> Submit one daily check-in</div>
+                <div><i class="bi bi-graph-up"></i> Review weekly patterns</div>
+              </div>
+
+              <div class="auth-small mt-auto">Educational use only</div>
+            </div>
+          </div>
+
+          <!-- RIGHT PANEL (FORM) -->
+          <div class="auth-right">
+            <div class="auth-card">
+              <h4 class="auth-title">Create account</h4>
+              <p class="auth-sub">Use your name and email to get started.</p>
+
+              <div class="mb-3">
+                <label class="form-label">Name</label>
+                <input id="signupName" class="form-control" placeholder="Your name">
+              </div>
+
+              <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input id="signupEmail" class="form-control" placeholder="you@example.com">
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">Password</label>
+                <div class="input-group">
+                  <input id="signupPassword" type="password" class="form-control" placeholder="At least 6 characters">
+                  <span class="input-group-text" onclick="togglePassword('signupPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="d-flex justify-content-end mt-2">
+                <a href="#" class="small-link" onclick="showLogin(); return false;">Back to login</a>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-4" onclick="signup()">Create account</button>
+
+              <div class="auth-help mt-3">
+                You can view your history and weekly trends after your first check-in.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= CHANGE PASSWORD ================= -->
+  <section id="forgotPage" class="container d-none auth-page d-flex align-items-center min-vh-100">
+    <div class="row w-100 justify-content-center">
+      <div class="col-lg-9 col-xl-8">
+        <div class="auth-shell">
+
+          <div class="auth-left d-none d-md-flex">
+            <div>
+              <div class="auth-brand">MindBridge</div>
+              <div class="auth-tag">Change your password</div>
+
+              <div class="auth-bullets mt-4">
+                <div><i class="bi bi-shield-lock"></i> You must be logged in</div>
+                <div><i class="bi bi-key"></i> Enter old + new password</div>
+              </div>
+            </div>
+
+            <div class="auth-small mt-auto">
+              Password change
+            </div>
+          </div>
+
+          <div class="auth-right">
+            <div class="auth-card">
+              <h4 class="auth-title">Change Password</h4>
+              <p class="auth-sub">Enter your current password and set a new one.</p>
+
+              <div class="mb-2">
+                <label class="form-label">Current Password</label>
+                <div class="input-group">
+                  <input id="oldPassword" class="form-control" type="password" placeholder="Current password">
+                  <span class="input-group-text" onclick="togglePassword('oldPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <div class="mb-2">
+                <label class="form-label">New Password</label>
+                <div class="input-group">
+                  <input id="newPassword" class="form-control" type="password" placeholder="New password">
+                  <span class="input-group-text" onclick="togglePassword('newPassword', this)">
+                    <i class="bi bi-eye"></i>
+                  </span>
+                </div>
+              </div>
+
+              <button class="btn btn-primary w-100 mt-4" onclick="changePassword()">Update Password</button>
+
+              <div class="auth-help mt-3">
+                For security, you must be logged in to change your password.
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ================= DASHBOARD ================= -->
+  <section id="dashboardPage" class="dashboard d-none">
+    <h2>Today’s Status</h2>
+    <p id="todayStatus" class="text-muted">No check-in yet</p>
+    <button id="takeTestBtn" class="btn btn-primary mt-3" onclick="showScreening()">
+      Take a Test
+    </button>
+
+    <div id="screeningAlertBox" class="alert alert-warning mt-3 d-none" role="alert"></div>
+    <div id="screeningSummary" class="text-muted mt-2"></div>
+
+
+
+    <div class="cards">
+      <div class="stat-card">
+        <h4>Mood</h4>
+        <span id="moodValue">–</span>/10
+      </div>
+      <div class="stat-card">
+        <h4>Energy</h4>
+        <span id="energyValue">–</span>/10
+      </div>
+      <div class="stat-card">
+        <h4>Sleep</h4>
+        <span id="sleepValue">–</span>/10
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <h3>Weekly Wellness Trend</h3>
+      <div class="chart-wrapper">
+        <canvas id="weeklyChart"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= SCREENING PAGE (placeholder) ================= -->
+  <!-- ================= SCREENING PAGE ================= -->
+  <section id="screeningPage" class="container d-none screening-page">
+
+    <div class="screening-card">
+
+      <div class="screening-header">
+        <span class="screening-badge">Mental wellness screening</span>
+        <h3>How have you been feeling lately?</h3>
+        <p>
+          Answer honestly based on how you’ve felt over the <strong>past 2 weeks</strong>.
+          There are no right or wrong answers.
+        </p>
+      </div>
+
+      <form id="screeningForm">
+
+        <!-- QUESTION TEMPLATE -->
+        <div class="screening-question">
+          <p>1. I feel overwhelmed by daily responsibilities.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q1" value="0">Never</label>
+            <label><input type="radio" name="q1" value="1">Sometimes</label>
+            <label><input type="radio" name="q1" value="2">Often</label>
+            <label><input type="radio" name="q1" value="3">Almost always</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>2. I find it hard to relax or unwind.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q2" value="0">Never</label>
+            <label><input type="radio" name="q2" value="1">Sometimes</label>
+            <label><input type="radio" name="q2" value="2">Often</label>
+            <label><input type="radio" name="q2" value="3">Almost always</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>3. I feel motivated to complete my daily tasks.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q3" value="0">Always</label>
+            <label><input type="radio" name="q3" value="1">Often</label>
+            <label><input type="radio" name="q3" value="2">Rarely</label>
+            <label><input type="radio" name="q3" value="3">Never</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>4. I feel anxious or worried without a clear reason.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q4" value="0">Never</label>
+            <label><input type="radio" name="q4" value="1">Sometimes</label>
+            <label><input type="radio" name="q4" value="2">Often</label>
+            <label><input type="radio" name="q4" value="3">Almost always</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>5. I feel positive about my future.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q5" value="0">Always</label>
+            <label><input type="radio" name="q5" value="1">Often</label>
+            <label><input type="radio" name="q5" value="2">Rarely</label>
+            <label><input type="radio" name="q5" value="3">Never</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>6. I have trouble concentrating on tasks.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q6" value="0">Never</label>
+            <label><input type="radio" name="q6" value="1">Sometimes</label>
+            <label><input type="radio" name="q6" value="2">Often</label>
+            <label><input type="radio" name="q6" value="3">Almost always</label>
+          </div>
+        </div>
+
+        <div class="screening-question">
+          <p>7. I feel emotionally supported by people around me.</p>
+          <div class="screening-scale">
+            <label><input type="radio" name="q7" value="0">Always</label>
+            <label><input type="radio" name="q7" value="1">Often</label>
+            <label><input type="radio" name="q7" value="2">Rarely</label>
+            <label><input type="radio" name="q7" value="3">Never</label>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary w-100 mt-4" onclick="submitScreening()">
+          Submit screening
+        </button>
+
+      </form>
+
+      <div id="screeningResult" class="screening-result d-none"></div>
+
+    </div>
+  </section>
+
+
+  <!-- ================= PROFILE PAGE (placeholder) ================= -->
+  <section id="profilePage" class="container d-none mt-4 profile-page">
+
+    <!-- HERO -->
+    <div class="profile-hero mb-5">
+      <div class="profile-hero-content text-center">
+
+        <div class="profile-avatar-wrap">
+          <div class="profile-avatar-lg">
+            <i class="bi bi-heart-pulse"></i>
+          </div>
+
+          <h3 id="profileName">User</h3>
+          <p id="profileEmail" class="text-muted mb-0">—</p>
+          <p class="profile-tagline">
+            Your personal mental wellness space
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- INFO CARDS -->
+    <div class="row g-4 mb-5">
+
+      <div class="col-md-6">
+        <div class="profile-info-card h-100">
+          <h5>🌱 About You</h5>
+          <p>
+            This space helps you reflect on your emotional well-being.
+            Regular check-ins can help you notice patterns and improve self-awareness.
+          </p>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="profile-info-card h-100">
+          <h5>🧠 Why MindBridge?</h5>
+          <p>
+            MindBridge is designed to promote healthy mental habits through
+            self-reflection, tracking, and awareness.
+          </p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- SELF CARE -->
+    <div class="profile-section mb-5">
+      <h4 class="mb-4">Self-Care Suggestions</h4>
+
+      <div class="selfcare-grid">
+
+        <div class="selfcare-card">
+          <i class="bi bi-wind"></i>
+          <h6>Breathing</h6>
+          <p>Slow breathing helps calm your nervous system.</p>
+        </div>
+
+        <div class="selfcare-card">
+          <i class="bi bi-journal-text"></i>
+          <h6>Journaling</h6>
+          <p>Write down one thought before sleeping.</p>
+        </div>
+
+        <div class="selfcare-card">
+          <i class="bi bi-person-walking"></i>
+          <h6>Movement</h6>
+          <p>Light movement boosts mood and energy.</p>
+        </div>
+
+        <div class="selfcare-card">
+          <i class="bi bi-moon-stars"></i>
+          <h6>Rest</h6>
+          <p>Consistent sleep improves emotional balance.</p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- DISCLAIMER -->
+    <div class="profile-disclaimer mt-5 mb-5">
+      <strong>⚠ Disclaimer</strong>
+      <p class="mb-0">
+        MindBridge is an educational mental wellness tool and does not replace
+        professional medical advice or diagnosis.
+      </p>
+    </div>
+
+  </section>
+
+
+
+  <!-- ================= FORCED DAILY CHECK-IN MODAL ================= -->
+  <div class="modal fade" id="dailyCheckinModal" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content login-card p-4">
+
+        <h5 class="mb-3 text-center">Daily Check-In</h5>
+
+        <label>Mood: <strong><span id="moodVal">5</span></strong></label>
+        <input type="range" min="1" max="10" value="5" id="mood" class="form-range"
+          oninput="moodVal.innerText=this.value">
+
+        <label class="mt-3">Stress: <strong><span id="stressVal">5</span></strong></label>
+        <input type="range" min="1" max="10" value="5" id="stress" class="form-range"
+          oninput="stressVal.innerText=this.value">
+
+        <label class="mt-3">Energy: <strong><span id="energyVal">5</span></strong></label>
+        <input type="range" min="1" max="10" value="5" id="energy" class="form-range"
+          oninput="energyVal.innerText=this.value">
+
+        <label class="mt-3">Sleep: <strong><span id="sleepVal">5</span></strong></label>
+        <input type="range" min="1" max="10" value="5" id="sleep" class="form-range"
+          oninput="sleepVal.innerText=this.value">
+
+        <button class="btn btn-primary w-100 mt-4" onclick="submitCheckin()">
+          Submit Check-In
+        </button>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= SCRIPTS ================= -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="script.js"></script>
+
+</body>
+
+</html>
