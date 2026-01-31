@@ -1,20 +1,28 @@
-const mysql = require('mysql2');
-require('dotenv').config();
+const mysql = require("mysql2");
+require("dotenv").config();
 
-// Support both local .env (DB_*) and Railway MySQL (MYSQL*)
-const db = mysql.createConnection({
-  host: process.env.DB_HOST || process.env.MYSQLHOST,
-  port: Number(process.env.DB_PORT || process.env.MYSQLPORT || 3306),
-  user: process.env.DB_USER || process.env.MYSQLUSER,
-  password: process.env.DB_PASS || process.env.MYSQLPASSWORD,
-  database: process.env.DB_NAME || process.env.MYSQLDATABASE
+const db = mysql.createPool({
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
+
+  ssl: {
+    rejectUnauthorized: true
+  },
+
+  waitForConnections: true,
+  connectionLimit: 10,
+  queueLimit: 0
 });
 
-db.connect((err) => {
+db.getConnection((err, conn) => {
   if (err) {
-    console.error('MySQL connection failed:', err);
+    console.error("❌ DB Connection Failed:", err.message);
   } else {
-    console.log('MySQL connected successfully');
+    console.log("✅ Connected to MySQL (Aiven)");
+    conn.release();
   }
 });
 
