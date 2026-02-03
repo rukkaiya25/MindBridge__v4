@@ -1,3 +1,4 @@
 mindbridge.sql
 .env
 node_modules/
+.vscode/
