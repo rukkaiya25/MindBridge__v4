@@ -1268,3 +1268,94 @@ input[type="range"]::-webkit-slider-thumb {
   letter-spacing: .3px;
   color: white;
 }
+.psych-highlight {
+  background: linear-gradient(180deg, #ffffff, #eaf3f3);
+  border-radius: 20px;
+  padding: 24px;
+  border: 1px solid rgba(36,59,59,.12);
+  box-shadow: 0 20px 40px rgba(0,0,0,.08);
+}
+
+.psych-photo {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), var(--primary2));
+  color: white;
+  font-size: 34px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+/* ================= PSYCHOLOGIST PAGE ANIMATION ================= */
+
+@keyframes fadeUpSoft {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#psychologistPage .home-hero-left,
+#psychologistPage .psych-highlight {
+  animation: fadeUpSoft 0.8s ease both;
+}
+
+#psychologistPage .psych-highlight {
+  animation-delay: 0.2s;
+}
+.psych-highlight {
+  transition: all 0.35s ease;
+}
+
+.psych-highlight:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 30px 60px rgba(63, 169, 164, 0.35);
+}
+.psych-highlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  padding: 1px;
+  background: linear-gradient(
+    135deg,
+    rgba(63,169,164,0.4),
+    transparent,
+    rgba(47,127,123,0.4)
+  );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.psych-highlight {
+  position: relative;
+}
+@keyframes floatGentle {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+  100% { transform: translateY(0); }
+}
+
+.psych-photo {
+  animation: floatGentle 5s ease-in-out infinite;
+}
+#psychologistPage {
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(63,169,164,0.08),
+      transparent 55%
+    ),
+    var(--bg);
+}
+

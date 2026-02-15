@@ -16,6 +16,7 @@ function setNavbarVisible(show) {
 /* ===================== VIEW HELPERS ===================== */
 function hideAll() {
     [
+        "psychologistPage",
         "introPage",
         "loginPage",
         "signupPage",
@@ -493,7 +494,7 @@ function initApp() {
     setNavbarVisible(false);
 
     if (!token) {
-        el("introPage")?.classList.remove("d-none");
+        el("psychologistPage")?.classList.remove("d-none");
     } else {
         showDashboard();
     }
@@ -603,4 +604,8 @@ async function debugWhoAmI() {
     const me = await res.json().catch(() => null);
     console.log("AUTH ME:", me);
 }
-
+function goToIntro() {
+    hideAll();
+    el("introPage")?.classList.remove("d-none");
+}
+window.goToIntro = goToIntro;
